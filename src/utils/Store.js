@@ -35,7 +35,6 @@ export default class Store {
                 const snacks = await storeAPI.get("/snacks");
                 this.snacks = snacks.data;
                 this.set = true;
-                console.log("storeSet")
             } catch (err) {
                 return err
             }
