@@ -1,22 +1,22 @@
-import Snack from "./Snack";
 
-class Store {
+import storeAPI from "./axiosInstance";
+export default class Store {
     constructor(name) {
         this.name = name;
-        this.snacks = [new Snack()];
+        this.snacks = [];
         this.snackCount = 0;
         this.set = false;
         this.findSnack = (itemId) => {
             const snack = this.snacks.find(snack => snack.id === parseInt(itemId));
-            if (!snack){
+            if (!snack) {
                 window.alert(`Snack with id ${itemId} not found`);
                 return;
-            }   
+            }
             return snack;
         }
         this.removeSnack = (itemId) => {
             const snackIndex = this.snacks.findIndex(snack => snack.id === parseInt(itemId));
-            if (snackIndex === -1){
+            if (snackIndex === -1) {
                 window.alert(`Snack with id ${itemId} not found`);
                 return;
             }
@@ -26,28 +26,19 @@ class Store {
             this.snacks.push(newItem);
             this.snackCount++;
         }
-        // Create a function to call the db to set values
+        // Create a function to call the api to set store to set values
         this.setStore = async () => {
             if (this.set) {
                 return;
             }
-        };
-        this.apiGetAllSnacks = async (req, res, next) => {
-            
-        }
-        this.apiGetSnackById = (req, res, next) => {
-           
-        }
-        this.apiPostSnack = (req, res, next) => {
-            
-        }
-        this.apiPutSnack = (req, res, next) => {
-           
-        }
-        
-        this.apiDeleteSnackById = (req, res, next) => {
-            
+            try {
+                const snacks = await storeAPI.get("/snacks");
+                this.snacks = snacks.data;
+                this.set = true;
+                console.log("storeSet")
+            } catch (err) {
+                return err
+            }
         }
     }
 }
-exports = {Store};
