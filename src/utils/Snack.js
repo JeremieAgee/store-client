@@ -21,7 +21,7 @@ class Snack {
             this.name = updatedSnack.name;
             this.description = updatedSnack.description;
             this.price = parseFloat(updatedSnack.price).toFixed(2);
-            this.catagory = updatedSnack.catagory;
+            this.category = updatedSnack.category;
             this.instock = updatedSnack.instock;
             this.count = parseInt(updatedSnack.count);
         }
@@ -42,7 +42,7 @@ class Snack {
             }
             this.count += amount;
         }
-        
+
     }
 }
 
