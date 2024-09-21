@@ -5,5 +5,5 @@ const storeAPI = axios.create({
   timeout: 1500,
   headers: { "api-key": process.env.NEXT_PUBLIC_EXPRESS_STORE_API_KEY },
 });
-v
+
 export default storeAPI

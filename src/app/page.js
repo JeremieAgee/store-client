@@ -1,9 +1,14 @@
 "use client";
 import SnackCard from "@/components/SnackCard";
 import { useStore } from "./contexts/StoreContext";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function Home() {
-  const { store } = useStore();
+  const { store, loading } = useStore();
+
+  if (loading) {
+    return <LoadingSpinner />; // Show the loading spinner while loading
+  }
 
   return (
     <div className="bg-gray-50 min-h-screen py-10">

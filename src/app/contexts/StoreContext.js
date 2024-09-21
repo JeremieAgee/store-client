@@ -2,33 +2,27 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import Store from '../../utils/Store';
 
-// Create the context
 const StoreContext = createContext();
 
 // Provider component to wrap your app
 export const StoreProvider = ({ children }) => {
     const [store, setStore] = useState();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true); // Track loading state
 
     useEffect(() => {
         const myStore = new Store("Jeremie's Store");
 
-        // Fetch the snacks from the API (use the setStore method in the Store class)
         const initializeStore = async () => {
-            await myStore.setStore(); // Fetch the data and set it in the store
-            setStore(myStore); // Update the state with the store object
-            setLoading(false); // Loading complete
+            await myStore.setStore(); // Fetch data
+            setStore(myStore); // Update state with the store
+            setLoading(false); // Set loading to false when done
         };
 
-        initializeStore(); // Call the function on mount
+        initializeStore();
     }, []);
 
-    if (loading) {
-        return <div>Loading...</div>; // Show a loading state while fetching
-    }
-
     return (
-        <StoreContext.Provider value={{ store }}>
+        <StoreContext.Provider value={{ store, loading }}>
             {children}
         </StoreContext.Provider>
     );
