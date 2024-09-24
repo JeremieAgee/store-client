@@ -5,7 +5,7 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function Home() {
   const { store, loading } = useStore();
-
+  
   if (loading) {
     return <LoadingSpinner />; // Show the loading spinner while loading
   }
