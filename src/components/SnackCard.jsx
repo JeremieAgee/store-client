@@ -6,9 +6,10 @@ export default function SnackCard({ snack, updateSnack, deleteSnack }) {
   const [showUpdate, setShowUpdate] = useState(false);
 
   return (
-    <div>
+    <div className="bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6 transform transition-transform hover:scale-105">
       {showUpdate ? (
-        <div className="bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
+        <div>
+          <h2 className="text-2xl font-semibold text-blue-700 mb-4">Update Snack</h2>
           <div className="mt-4 flex space-x-3">
             <UpdateSnack 
               snack={snack} 
@@ -18,13 +19,13 @@ export default function SnackCard({ snack, updateSnack, deleteSnack }) {
           </div>
           <button
             onClick={() => setShowUpdate(!showUpdate)}
-            className="mt-4 bg-blue-600 text-white rounded p-2 hover:bg-blue-700 transition-colors duration-200"
+            className="mt-4 bg-red-600 text-white rounded-full px-4 py-2 hover:bg-red-700 transition-colors duration-200"
           >
             Cancel Update/Delete
           </button>
         </div>
       ) : (
-        <div className="bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
+        <div>
           <h2 className="text-2xl font-semibold text-blue-700 mb-2">{snack.name}</h2>
           <p className="text-gray-700 mb-3">{snack.description}</p>
 
@@ -41,7 +42,7 @@ export default function SnackCard({ snack, updateSnack, deleteSnack }) {
 
           <button
             onClick={() => setShowUpdate(!showUpdate)}
-            className="mt-4 bg-blue-600 text-white rounded p-2 hover:bg-blue-700 transition-colors duration-200"
+            className="mt-4 bg-blue-600 text-white rounded-full px-4 py-2 hover:bg-blue-700 transition-colors duration-200"
           >
             Update/Delete
           </button>

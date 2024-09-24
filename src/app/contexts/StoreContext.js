@@ -18,7 +18,13 @@ export const StoreProvider = ({ children }) => {
 
         initializeStore();
     }, []);
-
+    const addSnack = async (newSnack) => {
+        const addedSnack = await storeAPI.post("/snacks", newSnack);
+        setStore((prevStore) => ({
+            ...prevStore,
+            snacks: [...prevStore.snacks, addedSnack]
+        }));
+    };
     // Function to update a snack
     const updateSnack = async (updatedSnack) => {
         try {
@@ -48,7 +54,7 @@ export const StoreProvider = ({ children }) => {
     };
 
     return (
-        <StoreContext.Provider value={{ store, loading, updateSnack, deleteSnack }}>
+        <StoreContext.Provider value={{ store, loading, updateSnack, deleteSnack, addSnack }}>
             {children}
         </StoreContext.Provider>
     );
