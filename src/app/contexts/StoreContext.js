@@ -20,6 +20,7 @@ export const StoreProvider = ({ children }) => {
     }, []);
     const addSnack = async (newSnack) => {
         const addedSnack = await storeAPI.post("/snacks", newSnack);
+        newSnack.id = addedSnack.data.id
         setStore((prevStore) => ({
             ...prevStore,
             snacks: [...prevStore.snacks, newSnack]
@@ -29,6 +30,7 @@ export const StoreProvider = ({ children }) => {
     const updateSnack = async (updatedSnack) => {
         try {
             await storeAPI.put(`/snacks/${updatedSnack.id}`, updatedSnack); // Update API endpoint
+        
             setStore((prevStore) => ({
                 ...prevStore,
                 snacks: prevStore.snacks.map(snack =>

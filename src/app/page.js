@@ -12,7 +12,9 @@ export default function Home() {
   if (loading) {
     return <LoadingSpinner />; // Display loading spinner during data fetching
   }
-
+  const hide = () =>{
+    setShowNewSnack(false)
+  }
   return (
     <div className="bg-gradient-to-br from-indigo-100 to-blue-200 min-h-screen py-10">
       <div className="max-w-6xl mx-auto p-8">
@@ -27,7 +29,7 @@ export default function Home() {
         {/* Add Snack Button */}
         <div className="flex justify-center mb-8">
           <button
-            onClick={() => setShowNewSnack(!showNewSnack)}
+            onClick={() => setShowNewSnack(true)}
             className="bg-indigo-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-indigo-700 transition duration-300"
           >
             {showNewSnack ? "Cancel" : "Add New Snack"}
@@ -37,7 +39,7 @@ export default function Home() {
         {/* Conditional Snack Form */}
         {showNewSnack && (
           <div className="mb-8">
-            <AddSnack addSnack={addSnack} />
+            <AddSnack addSnack={addSnack} hide={hide}/>
           </div>
         )}
 

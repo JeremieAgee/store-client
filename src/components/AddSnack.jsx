@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function AddSnack({ addSnack }) {
+export default function AddSnack({ addSnack, hide }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(1.0);
@@ -13,6 +13,7 @@ export default function AddSnack({ addSnack }) {
     
     const newSnack = { name, description, price, category, inStock, count };
     addSnack(newSnack);
+    hide();
   };
 
   const changeCount = (e) => setCount(Number(e.target.value));
