@@ -10,6 +10,7 @@ export default function AddSnack({ addSnack }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     const newSnack = { name, description, price, category, inStock, count };
     addSnack(newSnack);
   };

@@ -22,7 +22,7 @@ export const StoreProvider = ({ children }) => {
         const addedSnack = await storeAPI.post("/snacks", newSnack);
         setStore((prevStore) => ({
             ...prevStore,
-            snacks: [...prevStore.snacks, addedSnack]
+            snacks: [...prevStore.snacks, newSnack]
         }));
     };
     // Function to update a snack
