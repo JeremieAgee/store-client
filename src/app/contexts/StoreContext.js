@@ -9,7 +9,7 @@ export const StoreProvider = ({ children }) => {
     const [loading, setLoading] = useState(true); // Track loading state
     useEffect(() => {
         const initializeStore = async () => {
-            const myStore =  await storeAPI.get("/"); 
+            const myStore =  await storeAPI.get("/store"); 
             setStore(myStore.data);
             setLoading(false); // Set loading to false when done
         };
